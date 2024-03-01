@@ -1,0 +1,65 @@
+﻿@page
+@model MyStore.Pages.Clients.EditModel
+@{
+}
+
+<br />
+<h2>Edit Client</h2>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.clientInfo.id"/>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" value="@Model.clientInfo.name" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="email" value="@Model.clientInfo.email" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Phone</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="phone" value="@Model.clientInfo.phone" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="address" value="@Model.clientInfo.address" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+
+    @if (Model.message.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-dismissible @(Model.message.Contains("Error") ? "alert-danger" : "alert-info") fade show" role="alert" id="messageAlert">
+                    <strong>@Model.message</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(function () {
+                var messageAlert = document.getElementById('messageAlert');
+                if (messageAlert) {
+                    messageAlert.style.display = 'none'; // Hide the alert after 2 seconds
+                }
+            }, 2000);
+        </script>
+    }
+
+</form>
